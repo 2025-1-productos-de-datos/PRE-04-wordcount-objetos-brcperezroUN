@@ -1,4 +1,4 @@
-from homework.src._internals.cout_words import CountWordsMixin
+from homework.src._internals.count_words import CountWordsMixin
 from homework.src._internals.parse_args import ParseArgsMixin
 from homework.src._internals.preprocess_lines import PreprocessLinesMixin
 from homework.src._internals.read_all_lines import ReadAllLinesMixin
