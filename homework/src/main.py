@@ -1,25 +1,37 @@
-import argparse
+from homework.src._internals.cout_words import CountWordsMixin
+from homework.src._internals.parse_args import ParseArgsMixin
+from homework.src._internals.preprocess_lines import PreprocessLinesMixin
+from homework.src._internals.read_all_lines import ReadAllLinesMixin
+from homework.src._internals.split_into_words import SplitIntoWordsMixin
+from homework.src._internals.write_word_counts import WriteWordCountsMixin
 
 
-class ArgumentParser:
+class WordCountApp(
+    ParseArgsMixin,
+    ReadAllLinesMixin,
+    PreprocessLinesMixin,
+    SplitIntoWordsMixin,
+    CountWordsMixin,
+    WriteWordCountsMixin,
+):
+
     def __init__(self):
-        self.input = None
-        self.output = None
+        self.input_folder = None
+        self.output_folder = None
+        self.lines = None
+        self.preprocessed_lines = None
+        self.words = None
+        self.counter = None
 
     def run(self):
-        parser = argparse.ArgumentParser(description="Count words in files")
 
-        parser.add_argument("input", type=str, help="Path to the input folder")
-        parser.add_argument("output", type=str, help="Path to the output folder")
-
-        parsed_args = parser.parse_args()
-
-        self.input = parsed_args.input
-        self.output = parsed_args.output
+        self.parse_arges()
+        self.read_all_lines()
+        self.preprocess_lines()
+        self.split_into_words()
+        self.count_words()
+        self.write_word_counts()
 
 
-def main():
-    argument_parser = ArgumentParser()
-    argument_parser.run()
-    print(argument_parser.input)
-    print(argument_parser.output)
+if __name__ == "__main__":
+    WordCountApp().run()

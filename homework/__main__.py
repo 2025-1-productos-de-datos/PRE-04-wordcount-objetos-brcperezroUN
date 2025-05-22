@@ -1,6 +1,6 @@
 """Entry point for the homework package"""
 
-from .src.main import main
+from .src.main import WordCountApp
 
 if __name__ == "__main__":
-    main()
+    WordCountApp().run()
